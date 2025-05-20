@@ -22,6 +22,13 @@ if (prevSlug) {
     window.location.href = baseWixUrl + prevSlug;
   };
 }
+
+if (nextSlug) {
+  nextBtn.style.display = "inline-block";
+  nextBtn.onclick = () => {
+    window.location.href = baseWixUrl + nextSlug;
+  };
+}
  // 🔁 Replace with your Wix domain
 
 // Get DOM elements
