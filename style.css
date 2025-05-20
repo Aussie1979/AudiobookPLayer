@@ -1,13 +1,24 @@
 body {
   font-family: sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
+  background: #f0f0f0;
+  margin: 0;
   padding: 20px;
+  color: #222;
+  text-align: center;
+}
+
+#playerContainer {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
 #playerContainer.dark {
-  background-color: #222;
-  color: #eee;
+  background: #111;
+  color: white;
 }
 
 audio {
@@ -15,36 +26,28 @@ audio {
   margin: 10px 0;
 }
 
-#controls button,
-#speedControls button,
-#darkModeToggle {
+button {
+  padding: 10px 15px;
   margin: 5px;
-  padding: 10px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  background-color: #eee;
 }
 
-#speedControls button.active {
-  background-color: #007BFF;
+button:hover {
+  background-color: #ddd;
+}
+
+button.active {
+  background-color: #007bff;
   color: white;
 }
 
-#navButtons {
-  margin-top: 10px;
+#darkModeToggle {
+  margin-top: 20px;
 }
 
-#navButtons a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #007BFF;
-}
-
-#playerContainer {
-  max-width: 600px;
-  margin: 0 auto;
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+#chapterNav {
+  margin-top: 15px;
 }
