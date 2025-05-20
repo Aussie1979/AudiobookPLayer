@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Audio Player</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="playerContainer">
+    <h2 id="bookTitle"></h2>
+    <h3 id="chapterTitle">Loading...</h3>
+    <audio id="audioPlayer" controls></audio>
+
+    <div id="controls">
+      <button id="rewindBtn">⏪ Rewind 10s</button>
+      <button id="playPauseBtn">Play/Pause</button>
+      <button id="forwardBtn">⏩ Forward 10s</button>
+    </div>
+
+    <div id="speedControls">
+      <label>Speed:</label>
+      <button data-speed="0.75">0.75x</button>
+      <button data-speed="1" class="active">1x</button>
+      <button data-speed="1.25">1.25x</button>
+      <button data-speed="1.5">1.5x</button>
+      <button data-speed="2">2x</button>
+    </div>
+
+    <div id="navButtons">
+      <a id="prevChapterLink" href="#">⬅ Previous Chapter</a>
+      <a id="nextChapterLink" href="#">Next Chapter ➡</a>
+    </div>
+
+    <button id="darkModeToggle">Dark Mode</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

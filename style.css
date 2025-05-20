@@ -1,0 +1,50 @@
+body {
+  font-family: sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 20px;
+}
+
+#playerContainer.dark {
+  background-color: #222;
+  color: #eee;
+}
+
+audio {
+  width: 100%;
+  margin: 10px 0;
+}
+
+#controls button,
+#speedControls button,
+#darkModeToggle {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#speedControls button.active {
+  background-color: #007BFF;
+  color: white;
+}
+
+#navButtons {
+  margin-top: 10px;
+}
+
+#navButtons a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #007BFF;
+}
+
+#playerContainer {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
