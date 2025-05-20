@@ -8,7 +8,8 @@ const prevSlug = params.get("prev");
 const nextSlug = params.get("next");
 
 // Point to your actual Wix site
-const wixBaseUrl = "https://eliasothitis.wixsite.com/my-site-24/chapters/";  // 🔁 Replace with your Wix domain
+const baseWixUrl = params.get("base") || "https://eliasothitis.wixsite.com/my-site-24/chapters/";
+ // 🔁 Replace with your Wix domain
 
 // Get DOM elements
 const audioPlayer = document.getElementById("audioPlayer");
