@@ -13,6 +13,22 @@ const rewindBtn = document.getElementById("rewindBtn");
 const forwardBtn = document.getElementById("forwardBtn");
 const speedButtons = document.querySelectorAll("#speedControls button");
 
+// Point to your actual Wix site
+const baseWixUrl = params.get("base") || "https://eliasothitis.wixsite.com/my-site-24/chapters/";
+if (nextSlug) {
+  nextBtn.style.display = "inline-block";
+  nextBtn.onclick = () => {
+    window.location.href = baseWixUrl + nextSlug;
+  };
+}
+
+if (prevSlug) {
+  prevBtn.style.display = "inline-block";
+  prevBtn.onclick = () => {
+    window.location.href = baseWixUrl + prevSlug;
+  };
+}
+
 // Set titles
 chapterTitle.textContent = chapterName;
 bookTitle.textContent = bookName;
