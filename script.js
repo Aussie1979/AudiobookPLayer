@@ -1,85 +1,50 @@
-// Parse URL parameters
-const params = new URLSearchParams(window.location.search);
-const audioUrl = params.get("audio");
-const chapterName = params.get("title") || "Unknown Chapter";
-const bookName = params.get("book") || "Unknown Book";
+<script>
+    const params = new URLSearchParams(window.location.search);
 
-// Get DOM elements
-const audioPlayer = document.getElementById("audioPlayer");
-const chapterTitle = document.getElementById("chapterTitle");
-const bookTitle = document.getElementById("bookTitle");
-const playPauseBtn = document.getElementById("playPauseBtn");
-const rewindBtn = document.getElementById("rewindBtn");
-const forwardBtn = document.getElementById("forwardBtn");
-const speedButtons = document.querySelectorAll("#speedControls button");
+    const audioUrl = params.get("audio");
+    const chapterTitle = params.get("title") || "Chapter";
+    const bookTitle = params.get("book") || "Audiobook";
+    const chapterId = params.get("id") || "chapter";
+    const prevSlug = params.get("prev");
+    const nextSlug = params.get("next");
+    const baseWixUrl = params.get("base") || "https://eliasothitis.wixsite.com/my-site-24/chapters/";
 
-// Point to your actual Wix site
-const baseWixUrl = "https://eliasothitis.wixsite.com/my-site-24/chapters/";
+    const audio = document.getElementById("audioPlayer");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
-if (nextSlug) {
-  nextBtn.style.display = "inline-block";
-  nextBtn.onclick = () => {
-    window.location.href = baseWixUrl + nextSlug;
-  };
-}
+    document.getElementById("chapterTitle").textContent = chapterTitle;
+    document.getElementById("bookTitle").textContent = bookTitle;
 
-if (prevSlug) {
-  prevBtn.style.display = "inline-block";
-  prevBtn.onclick = () => {
-    window.location.href = baseWixUrl + prevSlug;
-  };
-}
+    if (audioUrl) {
+      audio.src = audioUrl;
 
-// Set titles
-chapterTitle.textContent = chapterName;
-bookTitle.textContent = bookName;
+      // Restore playback position
+      const savedTime = localStorage.getItem("audio-position-" + chapterId);
+      if (savedTime) {
+        audio.currentTime = parseFloat(savedTime);
+      }
 
-// Set up audio
-if (!audioUrl) {
-  chapterTitle.textContent = "Error: No audio URL provided.";
-} else {
-  audioPlayer.src = audioUrl;
+      // Save playback position
+      audio.addEventListener("timeupdate", () => {
+        localStorage.setItem("audio-position-" + chapterId, audio.currentTime);
+      });
+    } else {
+      document.getElementById("chapterTitle").textContent = "No audio file found.";
+    }
 
-  const chapterId = params.get("id");
-  const posKey = "pos_" + chapterId;
-  const savedPos = localStorage.getItem(posKey);
-  if (savedPos) {
-    audioPlayer.currentTime = parseFloat(savedPos);
-  }
+    // Setup navigation
+    if (nextSlug) {
+      nextBtn.style.display = "inline-block";
+      nextBtn.onclick = () => {
+        window.location.href = baseWixUrl + nextSlug;
+      };
+    }
 
-  audioPlayer.ontimeupdate = () => {
-    localStorage.setItem(posKey, audioPlayer.currentTime);
-  };
-}
-
-// Play/Pause
-playPauseBtn.onclick = () => {
-  if (audioPlayer.paused) {
-    audioPlayer.play();
-    playPauseBtn.textContent = "Pause";
-  } else {
-    audioPlayer.pause();
-    playPauseBtn.textContent = "Play";
-  }
-};
-audioPlayer.onplay = () => playPauseBtn.textContent = "Pause";
-audioPlayer.onpause = () => playPauseBtn.textContent = "Play";
-audioPlayer.onended = () => playPauseBtn.textContent = "Play";
-
-// Skip Controls
-rewindBtn.onclick = () => {
-  audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - 10);
-};
-forwardBtn.onclick = () => {
-  audioPlayer.currentTime = Math.min(audioPlayer.duration, audioPlayer.currentTime + 10);
-};
-
-// Playback Speed
-speedButtons.forEach(btn => {
-  btn.onclick = () => {
-    const speed = parseFloat(btn.dataset.speed);
-    audioPlayer.playbackRate = speed;
-    speedButtons.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-  };
-});
+    if (prevSlug) {
+      prevBtn.style.display = "inline-block";
+      prevBtn.onclick = () => {
+        window.location.href = baseWixUrl + prevSlug;
+      };
+    }
+  </script>
