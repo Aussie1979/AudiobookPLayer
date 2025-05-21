@@ -3,39 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Audio Player</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>Audiobook Player</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    h1, h2 {
+      margin-bottom: 10px;
+    }
+    audio {
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .nav-buttons {
+      margin-top: 20px;
+    }
+    button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 6px;
+      background-color: #1f1f1f;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #333;
+    }
+  </style>
 </head>
 <body>
-  <div id="playerContainer">
-    <h1 id="bookTitle">Loading...</h1>
-    <h2 id="chapterTitle">Loading...</h2>
-
-    <audio id="audioPlayer" controls></audio>
-
-    <div id="controls">
-      <button id="rewindBtn">⏪ Rewind 10s</button>
-      <button id="playPauseBtn">Play</button>
-      <button id="forwardBtn">⏩ Forward 10s</button>
-    </div>
-
-    <div id="speedControls">
-      <label>Speed:</label>
-      <button data-speed="0.75">0.75x</button>
-      <button data-speed="1" class="active">1x</button>
-      <button data-speed="1.25">1.25x</button>
-      <button data-speed="1.5">1.5x</button>
-      <button data-speed="2">2x</button>
-    </div>
-
-    <div id="chapterNav">
-      <button id="prevChapterBtn" style="display: none;">⬅ Previous Chapter</button>
-      <button id="nextChapterBtn" style="display: none;">Next Chapter ➡</button>
-    </div>
-
-    <button id="darkModeToggle">Dark Mode</button>
+  <h1 id="bookTitle">Loading...</h1>
+  <h2 id="chapterTitle"></h2>
+  <audio id="audioPlayer" controls></audio>
+  <div class="nav-buttons">
+    <button id="prevBtn" style="display:none;">◀ Previous</button>
+    <button id="nextBtn" style="display:none;">Next ▶</button>
   </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
