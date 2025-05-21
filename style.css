@@ -32,22 +32,36 @@ button {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  background-color: #eee;
+  background-color: #003366;
+  color: white;
 }
 
 button:hover {
-  background-color: #ddd;
+  background-color: #0055aa;
 }
 
 button.active {
   background-color: #007bff;
-  color: white;
 }
 
-#darkModeToggle {
-  margin-top: 20px;
+#speedControls, #controls, #chapterNav, #bottomControls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
 }
 
-#chapterNav {
-  margin-top: 15px;
+#darkModeToggle, #downloadBtn {
+  margin-top: 10px;
+}
+
+@media (max-width: 480px) {
+  button {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  h1, h2 {
+    font-size: 1.2em;
+  }
 }
